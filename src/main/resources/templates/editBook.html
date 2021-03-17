@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<form action="/book/save" method="post">
+    <input type="hidden" name="id" th:if="book!=null" th:value="${book.id}">
+    <input type="text" name="title" placeholder="Title" th:value="${book.title}"><br>
+    <textarea name="description" placeholder="description" th:text="${book.description}"></textarea><br>
+    <input type="number" name="price" placeholder="price" th:value="${book.price}"><br>
+    <select name="author.id">
+        <option th:each="author:${authors}" th:value="${author.id}"
+                th:text="${author.name} + ' '+ ${author.surname}"></option>
+    </select><br>
+    <input type="submit" name="Save">
+</form>
+<a href="/">Back</a>
+</body>
+</html>

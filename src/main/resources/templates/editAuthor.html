@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+Edit Author:
+<form action="/author/save" method="post" enctype="multipart/form-data"><br>
+    <input type="hidden" name="id" th:if="author!=null" th:value="${author.id}"><br>
+    <input type="text" name="name" placeholder="Name" th:value="${author.name}"><br>
+    <input type="text" name="surname" placeholder="Surname" th:value="${author.surname}"><br>
+    <input type="email" name="email" placeholder="Email"  th:value="${author.email}"><br>
+    <textarea placeholder="Bio" name="bio" th:text="${author.bio}"></textarea  ><br>
+    <select name="gender"  th:value="${author.gender}"><br>
+        <option value="MALE">Male</option>
+        <option value="FEMALE">Female</option>
+    </select><br>
+    <input type="file" name="image" th:value="${author.imageUrl}"><br>
+    <input type="submit" value="Add"><br>
+</form>
+<a href="/">Back</a>
+</body>
+</html>

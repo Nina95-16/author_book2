@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<div th:insert="fragments/header.html::header"></div>
+<table border="1">
+    <thead>
+    <tr>
+        <td>id</td>
+        <td>name</td>
+        <td>surname</td>
+        <td>email</td>
+        <td>gender</td>
+        <td>bio</td>
+        <td>image</td>
+        <td>action</td>
+    </tr>
+    </thead>
+    <tbody>
+    <tr th:each="author: ${authors}">
+        <td th:text="${author.id}"></td>
+        <td th:text="${author.name}"></td>
+        <td th:text="${author.surname}"></td>
+        <td th:text="${author.email}"></td>
+        <td th:text="${author.gender.name()}"></td>
+        <td th:text="${author.bio}"></td>
+        <td><img th:src="@{/author/image(photoUrl=${author.imageUrl})}" width="25"/>
+            <span th:text="${author.name}">
+       </span>
+        <td><a th:href="@{/author/save/(id=${author.id})}">Edit</a> | <a th:href="@{/author/delete/(id=${author.id})}">Delete</a>
+        </td>
+    </tr>
+    </tbody>
+</table>
+<a href="/">Back</a>
+</body>
+</html>

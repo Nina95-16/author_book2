@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <link href="/css/style.css" rel="stylesheet">
+</head>
+<body>
+<div th:insert="fragments/header.html::header"></div>
+<a href="/logout" th:if="${username != null}" >logout</a><br>
+<a href="/loginPage" th:if="${username == null}">login</a><br>
+<h3 th:text="Welcome + ' ' + ${username}" th:if="${username!=null}"></h3>
+<span th:text="#{home.add.author}"></span> :
+<form action="/author/save" method="post" enctype="multipart/form-data"><br>
+    <input type="text" name="name" placeholder="Name"><br>
+    <input type="text" name="surname" placeholder="Surname"><br>
+    <input type="email" name="email" placeholder="Email"><br>
+    <input type="text" name="username" placeholder="username"><br>
+    <input type="password" name="password" placeholder="password"><br>
+    <select name="role">
+        <option value="USER">user</option>
+        <option value="ADMIN">admin</option>
+    </select><br>
+    <textarea placeholder="Bio" name="bio"></textarea><br>
+    <select name="gender"><br>
+        <option value="MALE">Male</option>
+        <option value="FEMALE">Female</option>
+    </select><br>
+    <input type="file" name="image"><br>
+    <input type="submit" value="Add"><br>
+</form>
+<a href="/book/save" th:text="#{home.add.book}"></a><br>
+<a href="/allAuthors" th:text="#{home.all.authors}">All Authors</a> | <a href="/allBooks" th:text="#{home.all.books}">All Books</a>
+</body>
+</html>
